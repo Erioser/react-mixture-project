@@ -16,7 +16,8 @@ class LotterQueryPage extends Component {
       <div className="page-container lottery-query-page">
         <Row type="flex" justify="space-between">
           <Col span={12}>
-            <Typography.Title level={3}>asdas</Typography.Title>
+            <Typography.Title level={3}>请填写彩票信息</Typography.Title>
+            
           </Col>
           <Col span={12}>
             
