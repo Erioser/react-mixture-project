@@ -11,11 +11,11 @@ class LotteryHistoryTable extends Component {
         { title: '开奖日期', dataIndex: 'lottery_date', key: 'lottery_date' },
         { title: '兑奖截止日期', dataIndex: 'lottery_exdate', key: 'lottery_exdate' },
         { title: '本期销售额', dataIndex: 'lottery_sale_amount', key: 'lottery_sale_amount' },
-        { title: '奖池滚存', dataIndex: '', key: 'x' },
+        { title: '奖池滚存', dataIndex: 'lottery_pool_amount', key: 'lottery_pool_amount' },
         {
           title: '操作',
-          dataIndex: 'control',
-          key: 'control',
+          dataIndex: '',
+          key: 'x',
           render: (text, row) => {
             return <Link to={`/lottery/detail/${row.lottery_id}/${row.lottery_no}`}>查看详情</Link>
           }

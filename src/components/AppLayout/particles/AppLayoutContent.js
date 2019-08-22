@@ -16,7 +16,7 @@ class AppLayoutContent extends Component {
         <Route path="/lottery/detail/:id/:no" component = { LotteryDetailPage } />
         <Route path="/lottery/query" component = { LotteryQueryPage } />
         <Route path="/space" component = { SpacePage } />
-        <Redirect from="/" to="/lottery/history" />
+        <Redirect from="/" to="/space" />
       </Content>
     )
   }

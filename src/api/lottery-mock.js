@@ -101,3 +101,49 @@ export let detail = {
     },
     "error_code": 0
 }
+
+export let bonus = {
+    "reason": "执行成功",
+    "result": {
+        "lottery_id": "ssq",
+        "lottery_name": "双色球",
+        "lottery_no": "18029",
+        "lottery_date": "2018-03-15",
+        "real_lottery_res": "01,02,09,14,22,25,05",
+        "lottery_res": "01,11,02,09,14,22,25|05,03",
+        "in_money": "28",
+        "buy_red_ball_num": "7",
+        "buy_blue_ball_num": "2",
+        "hit_red_ball_num": "6",
+        "hit_blue_ball_num": "1",
+        "is_prize": "1",
+        "prize_msg": "恭喜您中奖了",
+        "lottery_prize": [
+            {
+                "prize_name": "一等奖",
+                "prize_require": "6+1",
+                "prize_num": "1",
+                "prize_money": "8,926,329"
+            },
+            {
+                "prize_name": "二等奖",
+                "prize_require": "6+0",
+                "prize_num": "1",
+                "prize_money": "288,700"
+            },
+            {
+                "prize_name": "三等奖",
+                "prize_require": "5+1",
+                "prize_num": "6",
+                "prize_money": "3,000"
+            },
+            {
+                "prize_name": "四等奖",
+                "prize_require": "4+1,5+0",
+                "prize_num": "6",
+                "prize_money": "200"
+            }
+        ]
+    },
+    "error_code": 0
+}

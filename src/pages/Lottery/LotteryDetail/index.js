@@ -16,7 +16,7 @@ class LotteryDetailPage extends Component {
       ]
     }
   }
-  componentWillMount () {
+  componentDidMount () {
     let { id, no } = this.props.match.params
     if (id && no) {
       apiGetLotteryQuery({

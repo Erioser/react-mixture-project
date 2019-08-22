@@ -19,7 +19,7 @@ class AppLayoutSider extends Component {
     return (
       <Sider trigger={null} collapsible collapsed={this.props.collapsed}>
         <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultOpenKeys={['lottery']} defaultSelectedKeys={['lottery-history']}>
+        <Menu theme="dark" mode="inline" defaultOpenKeys={['lottery']} defaultSelectedKeys={['space']}>
           <SubMenu
             key="lottery"
             title={<SubmenuTittle title="彩票"/>}

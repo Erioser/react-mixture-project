@@ -2,7 +2,8 @@
 import request from '@/utils/request'
 
 import {
-  lotteryTypes
+  lotteryTypes,
+  bonus
 } from '@/api/lottery-mock'
 
 const lotteryKey = '21257cf37e7c106a09fcc5cadd115995'
@@ -17,8 +18,14 @@ export const apiGetLotteryTypes = (params = {}) => {
 }
 
 export const apiGetLotteryBonus = (params = {}) => {
+  console.log('request:apiGetLotteryBonus')
   params.key = lotteryKey
   return request.get('/lottery/bonus', { params })
+  // return new Promise(resolve => {
+  //   setTimeout(() => {
+  //     resolve(bonus)
+  //   }, 3000)
+  // })
 }
 
 // lottery_id	是	string	彩票ID
@@ -26,9 +33,6 @@ export const apiGetLotteryBonus = (params = {}) => {
 export const apiGetLotteryQuery = (params = {}) => {
   params.key = lotteryKey
   return request.get('/lottery/query', { params })
-  // return new Promise(resolve => {
-  //   resolve(detail)
-  // })
 }
 
 // lottery_id	是	string	彩票ID
