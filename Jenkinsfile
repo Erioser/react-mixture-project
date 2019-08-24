@@ -11,9 +11,9 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                sh '''             
-                    rm -rf /root/nginx/www/react-mixture/*
-                    cp ./build/* /root/nginx/www/react-mixture
+                sh '''
+                    rmdir /s /q /root/nginx/www/react-mixture/
+                    copy ./build/* /root/nginx/www/react-mixture
                 '''  
             }
         }
