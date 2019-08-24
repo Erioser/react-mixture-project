@@ -20,7 +20,7 @@ export const apiGetLotteryTypes = (params = {}) => {
 export const apiGetLotteryBonus = (params = {}) => {
   console.log('request:apiGetLotteryBonus')
   params.key = lotteryKey
-  return request.get('/lottery/bonus', { params })
+  return request.get('/api-lottery/bonus', { params })
   // return new Promise(resolve => {
   //   setTimeout(() => {
   //     resolve(bonus)
@@ -32,7 +32,7 @@ export const apiGetLotteryBonus = (params = {}) => {
 // lottery_no	否	string	彩票期号，默认最新一期
 export const apiGetLotteryQuery = (params = {}) => {
   params.key = lotteryKey
-  return request.get('/lottery/query', { params })
+  return request.get('/api-lottery/query', { params })
 }
 
 // lottery_id	是	string	彩票ID
@@ -40,5 +40,5 @@ export const apiGetLotteryQuery = (params = {}) => {
 // page	否	string	当前页数，默认1
 export const apiGetLotteryHistory = (params = {}) => {
   params.key = lotteryKey
-  return request.get('/lottery/history', { params })
+  return request.get('/api-lottery/history', { params })
 }
