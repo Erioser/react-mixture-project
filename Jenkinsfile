@@ -14,13 +14,13 @@ pipeline {
                 sh '''      
                     yarn config set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g
                     yarn
+                    yarn build
                 '''
             }
         }
         stage('Deliver') { 
             steps {
-                sh '''
-                    npm run build
+                sh '''             
                     rm -rf ~/nginx/www/react-mixture/*
                     cp dist/*  ~/nginx/www/react-mixture
                 ''' 
