@@ -12,7 +12,7 @@ pipeline {
         stage('Deliver') { 
             steps {
                 sh '''
-                    copy ./build/* ~/nginx/www/react-mixture
+                    cp ./build/* ~/nginx/www/react-mixture
                 '''  
             }
         }
