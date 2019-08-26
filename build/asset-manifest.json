@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/react-mixture/static/css/main.27d58f8e.chunk.css",
+    "main.css": "/react-mixture/static/css/main.fb00399c.chunk.css",
     "main.js": "/react-mixture/static/js/main.1ebd46ba.chunk.js",
     "main.js.map": "/react-mixture/static/js/main.1ebd46ba.chunk.js.map",
     "runtime~main.js": "/react-mixture/static/js/runtime~main.2aaa7de1.js",
@@ -9,9 +9,9 @@
     "static/js/2.4f762125.chunk.js": "/react-mixture/static/js/2.4f762125.chunk.js",
     "static/js/2.4f762125.chunk.js.map": "/react-mixture/static/js/2.4f762125.chunk.js.map",
     "index.html": "/react-mixture/index.html",
-    "precache-manifest.ae565d843c6ae2587c7443374274c57c.js": "/react-mixture/precache-manifest.ae565d843c6ae2587c7443374274c57c.js",
+    "precache-manifest.8a548c65c04c6e80abdbb4ed5d964910.js": "/react-mixture/precache-manifest.8a548c65c04c6e80abdbb4ed5d964910.js",
     "service-worker.js": "/react-mixture/service-worker.js",
     "static/css/2.e8d046a2.chunk.css.map": "/react-mixture/static/css/2.e8d046a2.chunk.css.map",
-    "static/css/main.27d58f8e.chunk.css.map": "/react-mixture/static/css/main.27d58f8e.chunk.css.map"
+    "static/css/main.fb00399c.chunk.css.map": "/react-mixture/static/css/main.fb00399c.chunk.css.map"
   }
 }
