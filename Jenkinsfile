@@ -12,7 +12,8 @@ pipeline {
         stage('Deliver') { 
             steps {
                 sh '''
-                    mv ./build/* /home
+                    rm -rf /home/nginx/www/react-mixture/*
+                    mv ./build/* /home/nginx/www/react-mixture
                 '''  
             }
         }
