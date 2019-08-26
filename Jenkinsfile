@@ -12,7 +12,7 @@ pipeline {
         stage('Deliver') { 
             steps {
                 sh '''
-                    cp ./build/* /home
+                    mv ./build/* /home
                 '''  
             }
         }
