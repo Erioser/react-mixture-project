@@ -19,7 +19,7 @@ class AppLayoutSider extends Component {
     return (
       <Sider trigger={null} collapsible collapsed={this.props.collapsed}>
         <div className="logo">
-          Murlin React
+          Murlin React!!
         </div>
         <Menu theme="dark" mode="inline" defaultOpenKeys={['lottery']} defaultSelectedKeys={['space']}>
           <SubMenu
