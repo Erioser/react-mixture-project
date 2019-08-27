@@ -2,8 +2,7 @@
 import request from '@/utils/request'
 
 import {
-  lotteryTypes,
-  bonus
+  lotteryTypes
 } from '@/api/lottery-mock'
 
 const lotteryKey = '21257cf37e7c106a09fcc5cadd115995'
