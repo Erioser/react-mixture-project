@@ -82,10 +82,20 @@ module.exports = function(proxy, allowedHost) {
     },
     public: allowedHost,
     proxy: {
-      '/lottery': {
+      '/api-lottery': {
         target: 'http://apis.juhe.cn/',
-        changeOrigin: true
-      }
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api-lottery': '/lottery'
+        }
+      },
+      '/apiopen': {
+        target: 'https://api.apiopen.top/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/apiopen': ''
+        }
+      }   
     },
     before(app, server) {
       if (fs.existsSync(paths.proxySetup)) {

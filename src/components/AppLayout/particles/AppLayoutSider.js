@@ -39,6 +39,12 @@ class AppLayoutSider extends Component {
               </NavLink>
             </Menu.Item>
           </SubMenu>
+          <Menu.Item key="beauty-images">
+            <NavLink to="/beauty-images">
+              <Icon type="file-image" />
+              <span>美图推荐</span>
+            </NavLink>
+          </Menu.Item>
           <Menu.Item key="space">
             <NavLink to="/space">
               <Icon type="border" />
