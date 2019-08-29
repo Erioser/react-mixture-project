@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Icon } from 'antd'
+import Zmage from 'react-zmage'
 const { Meta } = Card
 
 const BeautyImageItem = (props) => {
@@ -8,7 +9,7 @@ const BeautyImageItem = (props) => {
     <Card
       className="beauty-images__item"
       cover={
-        <img
+        <Zmage
           alt="example"
           src={img}
         />
