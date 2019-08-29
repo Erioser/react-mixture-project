@@ -1,10 +1,39 @@
 
 .beauty-images-page {
+
+  min-height: 400px;
+
   .beauty-image__item-col {
     padding-bottom: 10px;
   }
-  .ant-pagination {
+  .beauty-images__pagination {
+    padding-top: 10px;
     display: flex;
     justify-content: center;
+  }
+
+  .beauty-images__content {
+    display: flex;
+    align-content: stretch;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .beauty-images__item {
+      width: 18%;
+      margin-bottom:10px;
+      display: flex;
+      flex-direction: column;
+
+      .ant-card-cover {
+        flex-grow: 1;
+        flex-shrink: 1;
+        vertical-align: middle;
+        display: flex;
+        align-items: center;
+      }
+      .ant-card-body, .ant-card-actions {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
   }
 }

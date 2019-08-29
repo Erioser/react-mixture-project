@@ -22,7 +22,7 @@ class AppLayoutContent extends Component {
         <Route path="/beauty-images" component = { BeautyImagesPage } />
         
         <Route path="/space" component = { SpacePage } />
-        <Redirect from="/" to="/space" />
+        {/* <Redirect to="/space" /> */}
       </Content>
     )
   }
