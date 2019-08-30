@@ -1,28 +1,38 @@
-import React, { Component } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import React, { Component, Suspense, lazy } from 'react'
+import { Route, Redirect, Switch } from 'react-router-dom'
 import { Layout } from 'antd'
+import ErrorBoundary from '@/components/ErrorBoundary'
+// import LotteryHistoryPage from '@/pages/Lottery/LotteryHistory'
+// import LotteryDetailPage from '@/pages/Lottery/LotteryDetail'
+// import LotteryQueryPage from '@/pages/Lottery/LotteryQuery'
+// import BeautyImagesPage from '@/pages/BeautyImages'
+// import SpacePage from '@/pages/Space'
 
-import LotteryHistoryPage from '@/pages/Lottery/LotteryHistory'
-import LotteryDetailPage from '@/pages/Lottery/LotteryDetail'
-import LotteryQueryPage from '@/pages/Lottery/LotteryQuery'
-
-import BeautyImagesPage from '@/pages/BeautyImages'
-
-import SpacePage from '@/pages/Space'
+const LotteryHistoryPage = lazy(() => import('@/pages/Lottery/LotteryHistory'))
+const LotteryDetailPage =  lazy(() => import('@/pages/Lottery/LotteryDetail'))
+const LotteryQueryPage =  lazy(() => import('@/pages/Lottery/LotteryQuery'))
+const BeautyImagesPage =  lazy(() => import('@/pages/BeautyImages'))
+const SpacePage =  lazy(() => import('@/pages/Space'))
 
 const { Content } = Layout
 class AppLayoutContent extends Component {  
   render() {
     return (
       <Content className = "app-layout__content">
-        <Route path="/lottery/history" component = { LotteryHistoryPage } />
-        <Route path="/lottery/detail/:id/:no" component = { LotteryDetailPage } />
-        <Route path="/lottery/query" component = { LotteryQueryPage } />
-        
-        <Route path="/beauty-images" component = { BeautyImagesPage } />
-        
-        <Route path="/space" component = { SpacePage } />
-        {/* <Redirect to="/space" /> */}
+        <ErrorBoundary>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+              <Route path="/lottery/history" component = { LotteryHistoryPage } />
+              <Route path="/lottery/detail/:id/:no" component = { LotteryDetailPage } />
+              <Route path="/lottery/query" component = { LotteryQueryPage } />
+              
+              <Route path="/beauty-images" component = { BeautyImagesPage } />
+              
+              <Route path="/space" component = { SpacePage } />
+              <Redirect from="/*" to="/space" />
+            </Switch>
+          </Suspense>
+        </ErrorBoundary>
       </Content>
     )
   }

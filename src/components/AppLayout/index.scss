@@ -5,6 +5,16 @@
     padding: 24px;
     background: #fff;
     min-height: 280px;
+    overflow: auto;
+  }
+  .app-layout__header {
+    display: flex;
+    justify-content: space-between;
+
+    .app-layout__header-weather {
+      padding: 0px 20px;
+      cursor: pointer;
+    }
   }
 }
 .app-layout .trigger {

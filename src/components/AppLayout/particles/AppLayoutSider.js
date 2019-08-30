@@ -16,8 +16,12 @@ const SubmenuTittle = ({ title }) => {
 
 class AppLayoutSider extends Component {
 
-  state = {
-    defaultSelectedKeys: []
+  constructor (props) {
+    super(props)
+    this.state = {
+      defaultSelectedKeys: [],
+      refreshKey: 0
+    }
   }
   
   static getDerivedStateFromProps (props, state) {
@@ -25,17 +29,20 @@ class AppLayoutSider extends Component {
     let { pathname } = props.location 
     keys.push(pathname.replace('/', ''))
     return {
-      defaultSelectedKeys: keys
+      defaultSelectedKeys: keys,
+      refreshKey: state.refreshKey + 1
     }
   }
   render() {
-    let { defaultSelectedKeys } = this.state
+    let { defaultSelectedKeys, refreshKey } = this.state
     return (
       <Sider trigger={null} collapsible collapsed={this.props.collapsed}>
+
         <div className="logo">
-          Murlin React!!
+          { this.props.collapsed ? 'Murlin' : 'Murlin\'s React' }
         </div>
-        <Menu theme="dark" mode="inline" defaultOpenKeys={['lottery']} defaultSelectedKeys={defaultSelectedKeys}>
+       
+        <Menu key={refreshKey} theme="dark" mode="inline" defaultOpenKeys={['lottery']} defaultSelectedKeys={defaultSelectedKeys}>
           <SubMenu
             key="lottery"
             title={<SubmenuTittle title="彩票"/>}
