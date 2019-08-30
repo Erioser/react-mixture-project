@@ -1,0 +1,1 @@
+{"version":3,"sources":["/Users/murlin_gao/Desktop/codes/react-mixture-project/src/pages/Lottery/LotteryHistory/index.scss"],"names":[],"mappings":"AACA,sCAEI,YAAa,CACb,sBAAuB","file":"7.ba87bf08.chunk.css","sourcesContent":["\n.lottery-history-page {\n  .ant-pagination {\n    display: flex;\n    justify-content: center;\n  }\n}\n"]}
