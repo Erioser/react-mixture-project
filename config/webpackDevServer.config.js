@@ -95,7 +95,14 @@ module.exports = function(proxy, allowedHost) {
         pathRewrite: {
           '^/apiopen': ''
         }
-      }   
+      },
+      '/old-apiopen': {
+        target: 'https://www.apiopen.top/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/old-apiopen': ''
+        }
+      } 
     },
     before(app, server) {
       if (fs.existsSync(paths.proxySetup)) {

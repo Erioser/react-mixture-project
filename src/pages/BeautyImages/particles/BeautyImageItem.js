@@ -1,10 +1,12 @@
 import React from 'react'
 import { Card, Icon } from 'antd'
 import Zmage from 'react-zmage'
+import moment from 'moment'
 const { Meta } = Card
 
 const BeautyImageItem = (props) => {
-  let { id, time, img } = props.info
+  let { time, img } = props.info
+  let timeText = moment(time).format('YYYY-MM-DD HH:mm:ss')
   return (
     <Card
       className="beauty-images__item"
@@ -18,7 +20,7 @@ const BeautyImageItem = (props) => {
         <Icon type="setting" key="setting" />
       ]}
     >
-      <Meta title={time}/>
+      <Meta title={timeText}/>
     </Card>
   )
 }

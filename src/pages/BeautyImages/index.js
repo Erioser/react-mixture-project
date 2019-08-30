@@ -59,7 +59,7 @@ class BeautyImagesPage extends Component {
     return true
   }
   render () {
-    let  { page, pageSize, images, hasMore, loading } = this.state
+    let  { page, images, hasMore, loading } = this.state
     return (
       <div className="page-container beauty-images-page">
         <Typography.Title level={3}>

@@ -17,7 +17,7 @@ class LotteryHistoryTable extends Component {
           dataIndex: '',
           key: 'x',
           render: (text, row) => {
-            return <Link to={`/lottery/detail/${row.lottery_id}/${row.lottery_no}`}>查看详情</Link>
+            return <Link  key={ row.lottery_no } to={`/lottery/detail/${row.lottery_id}/${row.lottery_no}`}>查看详情</Link>
           }
         }
       ]
