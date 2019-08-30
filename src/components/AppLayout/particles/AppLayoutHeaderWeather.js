@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { Popover, Card, List } from 'antd'
 import { apiGetWeather } from '@/api'
+import { WeatherService } from '@/service'
 
-const WeatherContent = (props) => {
-  let { ganmao, forecast } = props.weather
+
+const WeatherContent = ({ list, description }) => {
   return (
-    <Card title={ganmao} >
+    <Card title={description} >
       <List
         size="small"
         bordered
-        dataSource={forecast}
+        dataSource={list}
         renderItem={item => {
-          let { date, fengli, fengxiang, high, low, type } = item
           return (
-            <List.Item>{date} {type} {high} {low} {fengli} {fengxiang}</List.Item>
+            <List.Item>{item}</List.Item>
           )
         }}
       />
@@ -30,7 +30,7 @@ class AppLayoutHeaderWeather extends Component {
     if (city) {
       apiGetWeather({ city })
         .then(({ data }) => {
-          this.setState({ weather: data.data })
+          this.setState({ weather: WeatherService.formatWeatherData(data.data) })
         })
         .catch(e => console.log(e))
     }
@@ -38,7 +38,7 @@ class AppLayoutHeaderWeather extends Component {
   componentDidMount () {
     this.getWeatherByCity()
   }
-  shouldComponentUpdate (props, state) {
+  shouldComponentUpdate (props) {
     if (props.city !== this.props.city) {
       this.getWeatherByCity(props)
     }
@@ -47,14 +47,11 @@ class AppLayoutHeaderWeather extends Component {
   render() {
     let { weather } = this.state
     if (!weather) return ''
-
-    let { city, ganmao, wendu, forecast } = weather
-    let { date, type } = forecast[0]
     return (
       <div className="app-layout__header-weather">
         <Popover trigger="hover"
-        content={<WeatherContent weather={{ forecast, ganmao }} />}>
-          { city } { wendu }℃ { type } { date } 
+        content={<WeatherContent { ...weather } />}>
+          { weather.title } 
         </Popover>      
       </div>
     )
