@@ -1,6 +1,6 @@
 import React, { Component, Suspense, lazy } from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
-import { Layout } from 'antd'
+import { Layout, Spin } from 'antd'
 import ErrorBoundary from '@/components/ErrorBoundary'
 // import LotteryHistoryPage from '@/pages/Lottery/LotteryHistory'
 // import LotteryDetailPage from '@/pages/Lottery/LotteryDetail'
@@ -20,7 +20,7 @@ class AppLayoutContent extends Component {
     return (
       <Content className = "app-layout__content">
         <ErrorBoundary>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Spin/>}>
             <Switch>
               <Route path="/lottery/history" component = { LotteryHistoryPage } />
               <Route path="/lottery/detail/:id/:no" component = { LotteryDetailPage } />
