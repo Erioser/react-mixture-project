@@ -80,7 +80,7 @@ class AppLayoutSider extends BasicComponent {
           { this.props.collapsed ? 'Murlin' : 'Murlin\'s React' }
         </div>
        
-        <Menu key={refreshKey} theme="dark" mode="inline" defaultOpenKeys={this.getDefaultOpenKeys()} defaultSelectedKeys={defaultSelectedKeys}>
+        <Menu key={refreshKey} theme="dark" mode="inline" defaultOpenKeys={!this.props.collapsed ? this.getDefaultOpenKeys() : []} defaultSelectedKeys={defaultSelectedKeys}>
           { this.renderMenuList() }
         </Menu>
       </Sider>
