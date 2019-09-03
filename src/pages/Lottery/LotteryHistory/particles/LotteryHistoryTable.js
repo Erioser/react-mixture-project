@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { BasicPureComponent } from '@/service/BasicComponent'
 import { Table } from 'antd'
 import { Link } from 'react-router-dom'
-class LotteryHistoryTable extends Component {
+class LotteryHistoryTable extends BasicPureComponent {
   constructor (props) {
     super(props)
     this.state = {

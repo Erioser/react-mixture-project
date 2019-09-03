@@ -1,17 +1,17 @@
 import _ from 'lodash'
-
+import { List } from 'immutable'
 const state = {
   lotteryTypes: []
 }
-
-const reducer = (previousStat = state, {type, payload}) => {
-  let newState = _.cloneDeep(state)
+const reducer = (previousState = state, {type, payload}) => {
+  let _state = _.cloneDeep(previousState)
   switch (type) {
     case 'SET_LOTTERY_TYPES': 
-      newState.lotteryTypes = payload.lotteryTypes
-      break
-    default: break
+      _state.lotteryTypes = payload.lotteryTypes
+      return _state
+    default: 
+      return _state
   }
-  return newState
+  
 }
 export default reducer

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { BasicPureComponent } from '@/service/BasicComponent'
 import './index.scss'
 import { Layout } from 'antd'
 import { HashRouter as Router } from 'react-router-dom'
@@ -10,7 +10,7 @@ import AppLayoutContent from './particles/AppLayoutContent'
 import { apiGetCityInfoByIp } from '@/api'
 import GlobalContext from '@/components/GlobalContext'
 
-class AppLayout extends Component {  
+class AppLayout extends BasicPureComponent {  
   state = {
     collapsed: false,
     city: null
@@ -22,12 +22,11 @@ class AppLayout extends Component {
     })
   }
 
-  getCityInfoByIp () {
-    apiGetCityInfoByIp()
-      .then(({data}) => {
-        this.setState({ city: data.city })
-      })
-      .catch(error => console.lof(error))
+  async getCityInfoByIp () {
+    try {
+      let data = await apiGetCityInfoByIp()
+      this.setState({ city: data.city })
+    } catch (e) { console.log(e) }
   }
 
   getGlobalContextValue () {

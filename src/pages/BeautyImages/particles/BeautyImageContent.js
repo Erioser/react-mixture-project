@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { BasicPureComponent } from '@/service/BasicComponent'
 
 import BeautyImageItem from './BeautyImageItem'
 
-class BeautyImageContent extends Component {
+class BeautyImageContent extends BasicPureComponent {
   renderItems () {
     let { dataSource } = this.props
     if (!dataSource.length) return false

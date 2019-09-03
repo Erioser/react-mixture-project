@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { BasicPureComponent } from '@/service/BasicComponent'
 // import { connect } from 'react-redux'
 // import { bindActionCreators } from 'redux'
 // import lotteryActions from '@/store/modules/lottery/actions'
 import connect from '@/store/connect'
 import { Radio } from 'antd'
 
-class LotteryTypes extends Component {
+class LotteryTypes extends BasicPureComponent {
   renderLotteryTypes () {
     let { lottery, selectedTypeId, changeSelectedTypeId } = this.props
     if (!lottery.lotteryTypes.length) return ''

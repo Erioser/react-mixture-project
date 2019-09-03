@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { BasicPureComponent } from '@/service/BasicComponent'
 import { apiGetLotteryQuery } from '@/api'
 import { Typography, Divider, Table } from 'antd'
 const { Title, Paragraph, Text } = Typography
 
-class LotteryDetailPage extends Component {
+class LotteryDetailPage extends BasicPureComponent {
   constructor (props) {
     super(props)
     this.state = {
@@ -16,18 +16,19 @@ class LotteryDetailPage extends Component {
       ]
     }
   }
-  componentDidMount () {
+  async componentDidMount () {
     let { id, no } = this.props.match.params
     if (id && no) {
-      apiGetLotteryQuery({
-        lottery_id: id,
-        lottery_no: no
-      }).then(({data}) => {
+      try {
+        let data = await apiGetLotteryQuery({
+          lottery_id: id,
+          lottery_no: no
+        })
         if (data.error_code !== 0) return false
         this.setState({
           detail: data.result
         })
-      })
+      } catch (e) { console.log(e) }
     } 
   }
   renderBasicInfo () {

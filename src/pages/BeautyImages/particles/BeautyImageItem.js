@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Card, Icon } from 'antd'
 import Zmage from 'react-zmage'
 import moment from 'moment'
 const { Meta } = Card
 
-const BeautyImageItem = (props) => {
+const BeautyImageItem = memo((props) => {
   let { time, img } = props.info
   let timeText = moment(time).format('YYYY-MM-DD HH:mm:ss')
   return (
@@ -23,6 +23,6 @@ const BeautyImageItem = (props) => {
       <Meta title={timeText}/>
     </Card>
   )
-}
+})
 
 export default BeautyImageItem

@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { BasicPureComponent } from '@/service/BasicComponent'
 import { Table, Typography } from 'antd'
 
 const { Paragraph, Text } = Typography
 
-class LotteryQueryInfo extends Component {
+class LotteryQueryInfo extends BasicPureComponent {
   constructor (props) {
     super(props)
     this.state = {

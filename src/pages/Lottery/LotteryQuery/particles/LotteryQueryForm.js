@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { BasicPureComponent } from '@/service/BasicComponent'
 import connect from '@/store/connect'
 import { apiGetLotteryBonus } from '@/api'
 import {
@@ -11,19 +11,20 @@ import {
 
 const { Option } = Select
 
-class LotteryQueryForm extends Component {
+class LotteryQueryForm extends BasicPureComponent {
   handleSubmit = e => {
     e.preventDefault()
-    this.props.form.validateFieldsAndScroll((err, values) => {
+    this.props.form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         this.props.getLotteryResult({ loading: true })
-        apiGetLotteryBonus(values).then(({data}) => {
+        try {
+          let data = await apiGetLotteryBonus(values)
           if (data.error_code !== 0) {
             this.props.getLotteryResult({ result: data.reason, loading: false })
             return false
           }
           this.props.getLotteryResult({ result: data.result, loading: false })
-        })
+        } catch (e) { console.log(e) }
       }
     })
   }
