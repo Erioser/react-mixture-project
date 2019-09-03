@@ -1,0 +1,1 @@
+export const SET_LOTTERY_TYPES = 'SET_LOTTERY_TYPES'

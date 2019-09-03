@@ -1,4 +1,7 @@
 import { Map, List } from 'immutable'
+
+import * as types from './types'
+
 // const state = {
 //   lotteryTypes: []
 // }
@@ -15,7 +18,7 @@ const reducer = (previousState = state, {type, payload}) => {
   //     return _state
   // }
   switch (type) {
-    case 'SET_LOTTERY_TYPES': 
+    case types.SET_LOTTERY_TYPES: 
       return previousState.set('lotteryTypes', List(payload.lotteryTypes))
     default: 
       return previousState

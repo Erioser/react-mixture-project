@@ -1,7 +1,6 @@
 
-import {
-  apiGetLotteryTypes
-} from '@/api'
+import { apiGetLotteryTypes } from '@/api'
+import * as types from './types'
 
 export default {
   getLotteryTypes () {
@@ -9,7 +8,7 @@ export default {
       let data = await apiGetLotteryTypes()
       if (data.error_code !== 0) return false
       dispatch({
-        type: 'SET_LOTTERY_TYPES',
+        type: types.SET_LOTTERY_TYPES,
         payload: {
           lotteryTypes: data.result
         }

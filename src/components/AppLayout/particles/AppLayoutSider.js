@@ -1,7 +1,7 @@
 import React, { BasicComponent } from '@/service/BasicComponent'
 import { Layout, Menu, Icon } from 'antd'
 import { NavLink, withRouter } from 'react-router-dom'
-
+import { routes } from '@/router'
 const { SubMenu } = Menu
 const { Sider } = Layout
 
@@ -33,6 +33,44 @@ class AppLayoutSider extends BasicComponent {
       refreshKey: state.refreshKey + 1
     }
   }
+
+  renderMenuList () {
+    return routes.list.map(route => {
+      if (!route.children && route.link !== false) {
+        return (
+          <Menu.Item key={ route.key }>
+            <NavLink to={ route.path }>
+              <Icon type={ route.icon } />
+              <span>{ route.title }</span>
+            </NavLink>
+          </Menu.Item>
+        )
+      }
+      return (
+        <SubMenu
+          key={ route.key }
+          icon={ route.icon }
+          title={<SubmenuTittle title={ route.title }/>}
+        >
+          {
+            route.children.map(item => item.link !== false && (
+              <Menu.Item key={ item.key }>
+                <NavLink to={ item.path }>
+                  <Icon type={ item.icon } />
+                  <span>{ item.title }</span>
+                </NavLink>
+              </Menu.Item>
+            ))
+          }
+        </SubMenu>
+      )
+    })
+  }
+
+  getDefaultOpenKeys () {
+    return routes.list.filter(item => item.children).map(item => item.key)
+  }
+
   render() {
     let { defaultSelectedKeys, refreshKey } = this.state
     return (
@@ -42,36 +80,8 @@ class AppLayoutSider extends BasicComponent {
           { this.props.collapsed ? 'Murlin' : 'Murlin\'s React' }
         </div>
        
-        <Menu key={refreshKey} theme="dark" mode="inline" defaultOpenKeys={['lottery']} defaultSelectedKeys={defaultSelectedKeys}>
-          <SubMenu
-            key="lottery"
-            title={<SubmenuTittle title="彩票"/>}
-          >
-            <Menu.Item key="lottery-history">
-              <NavLink to="/lottery/history">
-                <Icon type="project" />
-                <span>历史中奖信息</span>
-              </NavLink>
-            </Menu.Item>
-            <Menu.Item key="lottery-query">
-              <NavLink to="/lottery/query">
-                <Icon type="calculator" />
-                <span>中奖计算器</span>
-              </NavLink>
-            </Menu.Item>
-          </SubMenu>
-          <Menu.Item key="beauty-images">
-            <NavLink to="/beauty-images">
-              <Icon type="file-image" />
-              <span>美图推荐</span>
-            </NavLink>
-          </Menu.Item>
-          <Menu.Item key="space">
-            <NavLink to="/space">
-              <Icon type="border" />
-              <span>预留空位</span>
-            </NavLink>
-          </Menu.Item>
+        <Menu key={refreshKey} theme="dark" mode="inline" defaultOpenKeys={this.getDefaultOpenKeys()} defaultSelectedKeys={defaultSelectedKeys}>
+          { this.renderMenuList() }
         </Menu>
       </Sider>
     )
