@@ -1,4 +1,4 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import { Layout, Menu, Icon } from 'antd'
 import { NavLink, withRouter } from 'react-router-dom'
 
@@ -14,7 +14,7 @@ const SubmenuTittle = ({ title }) => {
   )
 }
 
-class AppLayoutSider extends BasicPureComponent {
+class AppLayoutSider extends BasicComponent {
 
   constructor (props) {
     super(props)

@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react'
-import { BasicPureComponent } from '@/service/BasicComponent'
+import { BasicComponent } from '@/service/BasicComponent'
 import { Route, Redirect, Switch } from 'react-router-dom'
 import { Layout, Spin } from 'antd'
 import ErrorBoundary from '@/components/ErrorBoundary'
@@ -16,7 +16,7 @@ const BeautyImagesPage =  lazy(() => import('@/pages/BeautyImages'))
 const SpacePage =  lazy(() => import('@/pages/Space'))
 
 const { Content } = Layout
-class AppLayoutContent extends BasicPureComponent {  
+class AppLayoutContent extends BasicComponent {  
   render() {
     return (
       <Content className = "app-layout__content">

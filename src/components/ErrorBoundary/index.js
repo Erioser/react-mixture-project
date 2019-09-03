@@ -1,4 +1,4 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import { Result, Button } from 'antd'
 
 const ErrorUI = ({title}) => {
@@ -15,7 +15,7 @@ const ErrorUI = ({title}) => {
   )
 }
 
-class ErrorBoundary extends BasicPureComponent {
+class ErrorBoundary extends BasicComponent {
   constructor(props) {
     super(props);
     this.state = { hasError: false, error: null };

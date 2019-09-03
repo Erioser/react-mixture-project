@@ -1,9 +1,9 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import { Layout, Icon } from 'antd'
 import GlobalContext from '@/components/GlobalContext'
 import AppLayoutHeaderWeather from './AppLayoutHeaderWeather'
 const { Header } = Layout
-class AppLayoutHeader extends BasicPureComponent {
+class AppLayoutHeader extends BasicComponent {
   render() {
     return (
       <GlobalContext.Consumer>   

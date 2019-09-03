@@ -1,9 +1,9 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import { Provider } from 'react-redux'
 import store from '@/store'
 import AppLayout from './components/AppLayout'
 
-class App extends BasicPureComponent {
+class App extends BasicComponent {
   render () {
     return (
       <Provider store = {store}>

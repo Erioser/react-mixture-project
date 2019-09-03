@@ -1,10 +1,10 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import { Typography, Button, Icon, Spin } from 'antd'
 import './index.scss'
 import BeautyImageContent from './particles/BeautyImageContent'
 import { apiGetBeautyImages } from '@/api'
 
-class BeautyImagesPage extends BasicPureComponent {
+class BeautyImagesPage extends BasicComponent {
   constructor (props) {
     super(props)
     this.state = {
@@ -56,9 +56,8 @@ class BeautyImagesPage extends BasicPureComponent {
   shouldComponentUpdate (props, state) {
     if (state.page !== this.state.page) {
       this.getBeautyImages(state)
-      console.log('shouldComponentUpdate')
     }
-    return true
+    return this._shouldComponentUpdate()
   }
   render () {
     let  { page, images, hasMore, loading } = this.state

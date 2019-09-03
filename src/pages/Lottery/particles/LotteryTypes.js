@@ -1,11 +1,11 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 // import { connect } from 'react-redux'
 // import { bindActionCreators } from 'redux'
 // import lotteryActions from '@/store/modules/lottery/actions'
 import connect from '@/store/connect'
 import { Radio } from 'antd'
 
-class LotteryTypes extends BasicPureComponent {
+class LotteryTypes extends BasicComponent {
   renderLotteryTypes () {
     let { lottery, selectedTypeId, changeSelectedTypeId } = this.props
     if (!lottery.lotteryTypes.length) return ''
@@ -51,4 +51,7 @@ class LotteryTypes extends BasicPureComponent {
 // const LotteryTypesContainer = connect(mapStateToProps, mapDispatchToProps)(LotteryTypes)
 // export default LotteryTypesContainer
 
-export default connect('lottery')(LotteryTypes)
+export default connect([{
+  reducer:'lottery',
+  state: 'lotteryTypes'
+}])(LotteryTypes)

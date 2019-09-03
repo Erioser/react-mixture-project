@@ -1,4 +1,4 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import './index.scss'
 import { Layout } from 'antd'
 import { HashRouter as Router } from 'react-router-dom'
@@ -10,7 +10,7 @@ import AppLayoutContent from './particles/AppLayoutContent'
 import { apiGetCityInfoByIp } from '@/api'
 import GlobalContext from '@/components/GlobalContext'
 
-class AppLayout extends BasicPureComponent {  
+class AppLayout extends BasicComponent {  
   state = {
     collapsed: false,
     city: null

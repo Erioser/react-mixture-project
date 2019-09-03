@@ -1,4 +1,4 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import { Popover, Card, List } from 'antd'
 import { apiGetWeather } from '@/api'
 import { WeatherService } from '@/service'
@@ -21,7 +21,7 @@ const WeatherContent = ({ list, description }) => {
   )
 }
 
-class AppLayoutHeaderWeather extends BasicPureComponent {
+class AppLayoutHeaderWeather extends BasicComponent {
   state = {
     weather: null
   }
@@ -43,7 +43,7 @@ class AppLayoutHeaderWeather extends BasicPureComponent {
     if (props.city !== this.props.city) {
       this.getWeatherByCity(props)
     }
-    return true
+    return this._shouldComponentUpdate()
   }
   render() {
     let { weather } = this.state

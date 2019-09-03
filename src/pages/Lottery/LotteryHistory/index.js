@@ -1,11 +1,11 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import './index.scss'
 import { Divider, Pagination } from 'antd'
 import { apiGetLotteryHistory } from '@/api'
 import LotteryTypes from '@/pages/Lottery/particles/LotteryTypes'
 import LotteryHistoryTable from '@/pages/Lottery/LotteryHistory/particles/LotteryHistoryTable'
 
-class LotteryHistoryPage extends BasicPureComponent {
+class LotteryHistoryPage extends BasicComponent {
   constructor (props) {
     super(props)
     this.state = {

@@ -1,4 +1,4 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import connect from '@/store/connect'
 import { apiGetLotteryBonus } from '@/api'
 import {
@@ -11,7 +11,7 @@ import {
 
 const { Option } = Select
 
-class LotteryQueryForm extends BasicPureComponent {
+class LotteryQueryForm extends BasicComponent {
   handleSubmit = e => {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll(async (err, values) => {

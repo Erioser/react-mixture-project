@@ -1,9 +1,9 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import { apiGetLotteryQuery } from '@/api'
 import { Typography, Divider, Table } from 'antd'
 const { Title, Paragraph, Text } = Typography
 
-class LotteryDetailPage extends BasicPureComponent {
+class LotteryDetailPage extends BasicComponent {
   constructor (props) {
     super(props)
     this.state = {

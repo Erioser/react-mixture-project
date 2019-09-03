@@ -1,9 +1,9 @@
-import React, { BasicPureComponent } from '@/service/BasicComponent'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import { Row, Col, Typography, Result, Icon, Spin, Alert } from 'antd'
 import LotteryQueryForm from './particles/LotteryQueryForm'
 import LotteryQueryInfo from './particles/LotteryQueryInfo'
 import './index.scss'
-class LotterQueryPage extends BasicPureComponent {
+class LotterQueryPage extends BasicComponent {
   constructor (props) {
     super(props)
     this.state = {
