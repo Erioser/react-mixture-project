@@ -1,16 +1,16 @@
-import React, { useState, Suspense } from 'react'
-import { Row, Col, Pagination, Spin } from 'antd'
-import { useTodoListItems } from '@/hooks/todolist'
+import React, { useState, Suspense, memo } from 'react'
+import { Row, Col, Pagination, Spin, Empty } from 'antd'
+import { useTodolistStoreContext } from '@/hooks/todolist'
+
 import TodoListItem from './TodoListItem'
 
-const TodoListContent = (props) => {
+const TodoListContent = memo((props) => {
+  let [items] = useTodolistStoreContext('items')
   let [page, setPage] = useState(1)
-  let [items] = useTodoListItems('items')
   let pageSize = 8
 
-
   function renderItems () {
-    if (!items.length) return false
+    if (!items.length) return <Empty />
     
     let renderItems = items.slice(
       (page - 1) * pageSize,
@@ -18,7 +18,7 @@ const TodoListContent = (props) => {
     )
     return renderItems.map((item) => (
       <Col className="todolist__item-col" key={item.id} span={24 / (pageSize / 2)}>
-        <TodoListItem info={item}/>
+        <TodoListItem editAction={props.editAction} info={item}/>
       </Col> 
     ))
   }
@@ -37,6 +37,6 @@ const TodoListContent = (props) => {
       />
     </div>
   )
-}
+})
 
 export default TodoListContent

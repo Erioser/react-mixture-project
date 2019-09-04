@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Typography } from 'antd'
 
-import { useTodoListGetters } from '@/hooks/todolist'
+import { useTodolistStoreContext } from '@/hooks/todolist'
 
-const TodoListDes = () => {
-  let [ state ] = useTodoListGetters()
+const TodoListDes = memo(() => {
+  let [detail] = useTodolistStoreContext('todoDetail')
   return (
     <Typography.Paragraph>
-      { state.description }
+      { detail.description }
     </Typography.Paragraph>
   )
-}
+})
 
 export default TodoListDes

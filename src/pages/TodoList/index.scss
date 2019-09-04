@@ -7,7 +7,9 @@
   }
   .todolist__item {
     margin-bottom: 10px;
-
+    &.finished {
+      border-color: #1890ff;
+    }
     .ant-card-body {
       height: 150px;
     }
