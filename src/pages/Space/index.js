@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import './index.scss'
-class SpacePage extends Component {
+class SpacePage extends BasicComponent {
   render () {
     return (
       <div className="page-container space-page">

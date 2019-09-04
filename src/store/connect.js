@@ -39,28 +39,29 @@ function mkMapStateToProps (param) {
       param.forEach(reducer => {   
         let type = resolveParamType(reducer)
         if (type === 'String' && reducers.indexOf(reducer) > -1) {
-          result[reducer] = state[reducer]
+          result[reducer] = state.get(reducer).toJS()
         }
         if (type === 'Object' && reducers.indexOf(reducer.reducer) > -1) {
           let stateType = resolveParamType(reducer.state)
           if (stateType === 'Undefined' || stateType === 'Null') {
-            result[reducer.reducer] = state[reducer.reducer]
+            result[reducer.reducer] = state.get(reducer.reducer).toJS()
           }
           if (stateType === 'String') {
             let r = {}
-            r[reducer.state] = state[reducer.reducer][reducer.state]
+            r[reducer.state] =state.get(reducer.reducer).toJS()[reducer.state]
             result[reducer.reducer] = r
           }
           if (stateType === 'Array') {
             let stateResult = {}
             reducer.state.forEach(_state => {
-              stateResult[_state] = state[reducer.reducer][_state]
+              stateResult[_state] = state.get(reducer.reducer).toJS()[_state]
             })
             result[reducer.reducer] = stateResult
           }  
         }
       })
       return result
+      
     }
     return resultFunc
   }

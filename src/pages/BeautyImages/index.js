@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { message, Typography, Button, Icon, Spin } from 'antd'
+import React, { BasicComponent } from '@/service/BasicComponent'
+import { Typography, Button, Icon, Spin } from 'antd'
 import './index.scss'
 import BeautyImageContent from './particles/BeautyImageContent'
 import { apiGetBeautyImages } from '@/api'
-class BeautyImagesPage extends Component {
 
+class BeautyImagesPage extends BasicComponent {
   constructor (props) {
     super(props)
     this.state = {
@@ -23,12 +23,14 @@ class BeautyImagesPage extends Component {
       return { page }
     })
   }
-  async getBeautyImages () {
-    let { page, pageSize } = this.state
+  async getBeautyImages (state) {
+    let { page, pageSize } = state || this.state
     this.setState({ loading: true })
-    apiGetBeautyImages({
-      page, count: pageSize
-    }).then(({data}) => {
+    
+    try {
+      let data = await apiGetBeautyImages({
+        page, count: pageSize
+      })
       if (data.code !== 200) return false
       this.setState((state, props) => {
         return {
@@ -38,25 +40,24 @@ class BeautyImagesPage extends Component {
         }
       })
       if (!data.result.length) {
-        message.warning('抱歉已经没有更多的美图了');
+        this.msgHandler.warning('抱歉已经没有更多的美图了');
       } else {
-        message.success('成功获取到最新的美图');
+        this.msgHandler.success('成功获取到最新的美图');
       }
-    }).catch (e => {
-      message.error('不好意思出错了')
+    } catch (e) {
+      this.msgHandler.error('不好意思出错了')
       this.setState({ loading: false })
-    })
+    }
+    
   }
   componentDidMount () {
     this.getBeautyImages()
-    console.log('componentDidMount')
   }
   shouldComponentUpdate (props, state) {
     if (state.page !== this.state.page) {
-      this.getBeautyImages()
-      console.log('shouldComponentUpdate')
+      this.getBeautyImages(state)
     }
-    return true
+    return this._shouldComponentUpdate()
   }
   render () {
     let  { page, images, hasMore, loading } = this.state

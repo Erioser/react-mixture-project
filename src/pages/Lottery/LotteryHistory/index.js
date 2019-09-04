@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import './index.scss'
 import { Divider, Pagination } from 'antd'
 import { apiGetLotteryHistory } from '@/api'
 import LotteryTypes from '@/pages/Lottery/particles/LotteryTypes'
 import LotteryHistoryTable from '@/pages/Lottery/LotteryHistory/particles/LotteryHistoryTable'
 
-class LotteryHistoryPage extends Component {
+class LotteryHistoryPage extends BasicComponent {
   constructor (props) {
     super(props)
     this.state = {
@@ -25,19 +25,20 @@ class LotteryHistoryPage extends Component {
   pageChangeAction (page, pageSize) {
     this.setState({ page })
   }
-  getHistories () {
+  async getHistories () {
     let { selectedTypeId, pageSize, page } = this.state
-    apiGetLotteryHistory({
-      lottery_id: selectedTypeId,
-      page_size: pageSize,
-      page: page
-    }).then(({data}) => {
+    try {
+      let data = await apiGetLotteryHistory({
+        lottery_id: selectedTypeId,
+        page_size: pageSize,
+        page: page
+      })
       if (data.error_code !== 0) return false
       this.setState({
         histories: data.result.lotteryResList,
         total: data.result.totalPage
       })
-    })
+    } catch (e) { console.log(e) }
   }
   componentDidUpdate (props, state) {
     if (state.selectedTypeId !== this.state.selectedTypeId) {

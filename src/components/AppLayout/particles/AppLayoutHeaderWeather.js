@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { BasicComponent } from '@/service/BasicComponent'
 import { Popover, Card, List } from 'antd'
 import { apiGetWeather } from '@/api'
 import { WeatherService } from '@/service'
@@ -21,18 +21,19 @@ const WeatherContent = ({ list, description }) => {
   )
 }
 
-class AppLayoutHeaderWeather extends Component {
+class AppLayoutHeaderWeather extends BasicComponent {
   state = {
     weather: null
   }
-  getWeatherByCity (props) {
+  async getWeatherByCity (props) {
     let city = props ? props.city : this.props.city
     if (city) {
-      apiGetWeather({ city })
-        .then(({ data }) => {
-          this.setState({ weather: WeatherService.formatWeatherData(data.data) })
+      try {
+        let data = await apiGetWeather({ city })
+        this.setState({
+          weather: WeatherService.formatWeatherData(data.data)
         })
-        .catch(e => console.log(e))
+      } catch (e) { console.log(e) }
     }
   }
   componentDidMount () {
@@ -42,7 +43,7 @@ class AppLayoutHeaderWeather extends Component {
     if (props.city !== this.props.city) {
       this.getWeatherByCity(props)
     }
-    return true
+    return this._shouldComponentUpdate()
   }
   render() {
     let { weather } = this.state

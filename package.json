@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.4.3",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
+    "@babel/polyfill": "^7.4.4",
     "@svgr/webpack": "4.1.0",
     "@typescript-eslint/eslint-plugin": "1.6.0",
     "@typescript-eslint/parser": "1.6.0",
@@ -31,11 +34,13 @@
     "fs-extra": "7.0.1",
     "html-webpack-plugin": "4.0.0-beta.5",
     "identity-obj-proxy": "3.0.0",
+    "immutable": "^4.0.0-rc.12",
     "is-wsl": "^1.1.0",
     "jest": "24.7.1",
     "jest-environment-jsdom-fourteen": "0.1.0",
     "jest-resolve": "24.7.1",
     "jest-watch-typeahead": "0.3.0",
+    "localstorage": "^1.0.1",
     "lodash": "^4.17.15",
     "mini-css-extract-plugin": "0.5.0",
     "moment": "^2.24.0",
@@ -55,6 +60,7 @@
     "react-router-dom": "^5.0.1",
     "react-zmage": "^0.8.4",
     "redux": "^4.0.4",
+    "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
@@ -137,6 +143,16 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      "@babel/plugin-transform-regenerator"
     ]
-  }
+  },
+  "devDependencies": {}
 }
